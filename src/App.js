@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import Repos from './Components/Repos';
+import Nav from './Components/Nav'
+import Profile from './Components/Profile'
+import {useSelector} from 'react-redux';
 
 function App() {
+    const user = useSelector((state) =>state.Get_user)
+    const repos  = useSelector((state) =>state.Get_Repos)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+	<>
+    <Nav />
+    {user.length !== 0 && (
+        <div className="container pt-5">
+            <div className="row">
+                <div className="col-md-4 col-sm-4">
+                    <Profile userData={user}/>
+                </div>
+                <div className="col-md-8 col-sm-8">
+                    <ul className="list-group list-group-flush text-secondary">
+                        {repos.map((repo)=>(
+                            <Repos repos={repo} key={repo.id} />
+                            ))
+                        }
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+        )	
+    } 
+    </>
   );
 }
 
