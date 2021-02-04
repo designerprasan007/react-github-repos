@@ -1,14 +1,21 @@
+import {useState} from 'react';
 import Repos from './Components/Repos';
 import Nav from './Components/Nav'
 import Profile from './Components/Profile'
 import {useSelector} from 'react-redux';
-
+import './App.css';
 function App() {
     const user = useSelector((state) =>state.Get_user)
     const repos  = useSelector((state) =>state.Get_Repos)
+    const [DWmode, SetDWMode] = useState(true);
+
+    const DarkLighToggle =(e) =>{
+        SetDWMode(!DWmode)
+    }
+
   return (
-	<>
-    <Nav />
+	<div className={DWmode ? 'dark-mode' : 'white-mode'}>
+    <Nav DWmode={DWmode} SetDWMode={SetDWMode} DarkLighToggle={DarkLighToggle} />
     {user.length !== 0 && (
         <div className="container pt-5">
             <div className="row">
@@ -28,7 +35,7 @@ function App() {
         </div>
         )	
     } 
-    </>
+    </div>
   );
 }
 
