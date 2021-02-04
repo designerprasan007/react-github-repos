@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,WACE,qBAAuB,CACvB,UAAY,CACZ,YACF,CACA,YACE,UACF","file":"main.fa3a0847.chunk.css","sourcesContent":[".dark-mode{\n  background-color: black;\n  color: white;\n  height: 100vh;\n}\n.white-mode{\n  color: black;\n}"]}
